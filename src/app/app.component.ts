@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { environment } from './../environments/environment';
-import { IPData } from '../models/ip.model';
-import { MapComponent } from './map/map.component';
+import { IPData } from './models/ip.model';
+import { MapComponent } from './components/map/map.component';
 
 @Component({
   selector: 'app-root',
