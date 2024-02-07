@@ -1,3 +1,12 @@
+@import "../../../styles/variables.scss";
+
 #map {
-  height: 250px;
+  height: calc(100vh - 300px);
+  z-index: 1;
+}
+
+@media screen and (min-width: $grid-xs) {
+  #map {
+    height: calc(100vh - 280px);
+  }
 }

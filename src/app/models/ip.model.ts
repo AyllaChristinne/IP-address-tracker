@@ -1,16 +1,19 @@
-export interface IPData {
+export interface IPDataSuccess {
+  status: 'success';
   query: string;
-  status: string;
-  country: string;
-  countryCode: string;
-  regio: string;
-  regionName: string;
   city: string;
+  region: string;
   zip: string;
   lat: number;
   lon: number;
-  timezone: string;
+  offset: number;
   isp: string;
-  org: string;
-  as: string;
 }
+
+export interface IPDataError {
+  message: string;
+  status: 'fail';
+  query: string;
+}
+
+export type IPData = IPDataSuccess | IPDataError;

@@ -1,0 +1,90 @@
+@import "../../../styles/variables.scss";
+
+.dashboard {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.dashboard-heading {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: var(--color-gray);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.dashboard-text {
+  color: var(--color-dark-gray);
+  font-weight: 500;
+  font-size: 20px;
+  word-wrap: break-word;
+}
+
+@media screen and (min-width: $grid-lg) {
+  .dashboard {
+    flex-direction: row;
+    text-align: left;
+    padding: 32px;
+    gap: 32px;
+  }
+
+  .dashboard-section {
+    &:not(.dashboard-section--last) {
+      padding-right: 32px;
+      border-right: 1px solid #e5e5e5;
+    }
+
+    &.section-ip,
+    &.section-timezone {
+      width: 25%;
+    }
+
+    &.section-location {
+      width: 30%;
+    }
+
+    &.section-isp {
+      width: 20%;
+    }
+  }
+}
+
+.dashboard-info:empty {
+  height: 25px;
+  width: 100%;
+  min-width: 100px;
+  max-width: 250px;
+  border-radius: 4px;
+
+  animation: loading 2s infinite linear;
+  background: #f2f3f5;
+  background-image: -webkit-linear-gradient(
+    to right,
+    #f2f3f5 0%,
+    #fafaff 20%,
+    #f2f3f5 40%,
+    #f2f3f5 100%
+  );
+  background-image: linear-gradient(
+    to right,
+    #f2f3f5 0%,
+    #fafaff 20%,
+    #f2f3f5 40%,
+    #f2f3f5 100%
+  );
+  background-repeat: no-repeat;
+}
+
+@keyframes loading {
+  0% {
+    background-position: -100px;
+  }
+  100% {
+    background-position: 200px;
+  }
+}

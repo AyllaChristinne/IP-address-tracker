@@ -1,0 +1,23 @@
+<form 
+  class="form-container"
+  (ngSubmit)="fetchIp()"
+  [ngClass]="{'form--error': !loading && error}"
+  
+>
+  <input 
+    type="string"
+    name="ip"
+    title="Search for any IP address or domain"
+    placeholder="Search for any IP address or domain"
+    class="form-input"
+    [(ngModel)]="query"
+    [disabled]="loading"
+    (input)="resetError()"
+    
+  />
+  <button 
+    class="form-button"
+    type="submit"
+    [disabled]="loading"
+  ></button>
+</form>

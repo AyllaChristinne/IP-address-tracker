@@ -1,0 +1,75 @@
+@import "../styles/variables.scss";
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+  position: relative;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.background-image {
+  background: url("../assets/pattern-bg-mobile.png") no-repeat;
+  min-width: 100%;
+  height: 300px;
+}
+
+.content {
+  z-index: 2;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: calc(100vw - 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  text-align: center;
+}
+
+.title {
+  width: 100%;
+  color: var(--color-white);
+  font-size: 26px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: $grid-xs) {
+  .background-image {
+    background: url("../assets/pattern-bg-desktop.png") no-repeat;
+    height: 280px;
+    background-size: cover;
+  }
+}
+
+@media screen and (min-width: $grid-md) {
+  .content {
+    top: 40px;
+    left: 40px;
+    width: calc(100vw - 80px);
+  }
+}
+
+@media screen and (min-width: $grid-lg) {
+  .content {
+    max-width: 1000px;
+    left: calc(50% - 475px);
+    gap: 40px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width: $grid-xl) {
+  .content {
+    max-width: 1200px;
+    left: calc(50% - 600px);
+  }
+}

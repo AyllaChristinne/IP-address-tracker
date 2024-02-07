@@ -1,11 +1,11 @@
-<h1>{{clientIp.ip}}</h1>
-<h2>{{ipData?.city}}</h2>
-<h2>{{ipData?.timezone}}</h2>
-<h2>{{ipData?.isp}}</h2>
-
-<p>{{ipData?.lat}}</p>
-<p>{{ipData?.lon}}</p>
-
-@if (ipData) {
-  <app-map [lat]="ipData.lat" [lon]="ipData.lon"></app-map>
-}
+<div class="container">
+  <div class="background">
+    <div class="background-image" role="presentation"></div>
+    <app-map></app-map>
+  </div>
+  <div class="content">
+    <h1 class="title">IP Address Tracker</h1>
+    <app-input></app-input>
+    <app-dashboard></app-dashboard>
+  </div>
+</div>

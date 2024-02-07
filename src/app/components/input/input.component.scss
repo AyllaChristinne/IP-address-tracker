@@ -1,0 +1,52 @@
+@import "../../../styles/variables.scss";
+
+.form-container {
+  border-radius: 8px;
+  overflow: hidden;
+  height: 52px;
+  display: flex;
+}
+
+.form--error {
+  border: 2px solid #e54b4b;
+}
+
+.form-input {
+  width: 100%;
+  padding: 16px;
+  border: none;
+
+  &:focus-visible {
+  }
+
+  &:disabled {
+    background-color: #e5e5e5;
+    cursor: not-allowed;
+
+    &::placeholder {
+      color: #bebdbd;
+    }
+  }
+}
+
+.form-button {
+  background: url("../../../assets/icon-arrow.svg") no-repeat,
+    var(--color-black);
+  background-size: 10px 12px;
+  background-position: center;
+  border: none;
+  width: 60px;
+  height: 100%;
+
+  &:disabled {
+    background-color: var(--color-gray);
+    cursor: not-allowed;
+  }
+}
+
+@media screen and (min-width: $grid-xs) {
+  .form-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
