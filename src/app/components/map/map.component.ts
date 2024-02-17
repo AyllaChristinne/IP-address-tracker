@@ -1,8 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerService } from '../../services/marker.service';
-import { IpService } from '../../services/ip.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-map',
@@ -11,41 +9,21 @@ import { Subscription } from 'rxjs';
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss',
 })
-export class MapComponent implements OnInit, OnDestroy {
-  coordinates: { lat: number; lon: number } = { lat: 0, lon: 0 };
-  loading: boolean = true;
+export class MapComponent implements OnInit, OnChanges {
+  @Input({ required: true }) coordinates: { lat: number; lon: number } = {
+    lat: 0,
+    lon: 0,
+  };
   private map: any;
 
-  private ipDataSubscription: Subscription = new Subscription();
-  private ipDataLoadingSubscription: Subscription = new Subscription();
-
-  constructor(
-    private markerService: MarkerService,
-    private ipService: IpService
-  ) {}
+  constructor(private markerService: MarkerService) {}
 
   ngOnInit(): void {
-    this.ipDataSubscription = this.ipService.ipData$.subscribe((res) => {
-      if (res && res.status === 'success') {
-        this.coordinates = { lat: res.lat, lon: res.lon };
-        this.renderMap();
-      }
-    });
-
-    this.ipDataLoadingSubscription = this.ipService.loading$.subscribe(
-      (isLoading) => {
-        this.loading = isLoading;
-      }
-    );
+    this.renderMap();
   }
 
-  ngOnDestroy(): void {
-    if (this.ipDataSubscription) {
-      this.ipDataSubscription.unsubscribe();
-    }
-    if (this.ipDataLoadingSubscription) {
-      this.ipDataLoadingSubscription.unsubscribe();
-    }
+  ngOnChanges(): void {
+    this.renderMap();
   }
 
   private renderMap() {
@@ -71,7 +49,7 @@ export class MapComponent implements OnInit, OnDestroy {
       tiles.addTo(this.map);
     } else {
       this.map.setView(
-        [this.coordinates.lat + 0.005, this.coordinates.lon],
+        [this.coordinates.lat + 0.003, this.coordinates.lon],
         13
       );
     }
@@ -88,5 +66,9 @@ export class MapComponent implements OnInit, OnDestroy {
     });
 
     marker.addTo(this.map);
+    const markerElement = marker.getElement();
+    if (markerElement) {
+      markerElement.tabIndex = -1;
+    }
   }
 }

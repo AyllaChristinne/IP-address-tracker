@@ -1,11 +1,14 @@
 <div class="container">
   <div class="background">
     <div class="background-image" role="presentation"></div>
-    <app-map></app-map>
+    @if (coordinates) {
+      <app-map [coordinates]="coordinates" />
+    }
+
   </div>
   <div class="content">
     <h1 class="title">IP Address Tracker</h1>
-    <app-input></app-input>
-    <app-dashboard></app-dashboard>
+    <app-input [isError]="isError" [isLoading]="isLoading" (queryEmitter)="fetchIp($event)"></app-input>
+    <app-dashboard [ipData]="dataSuccess" [isLoading]="isLoading"></app-dashboard>
   </div>
 </div>

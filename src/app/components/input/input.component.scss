@@ -2,7 +2,6 @@
 
 .form-container {
   border-radius: 8px;
-  overflow: hidden;
   height: 52px;
   display: flex;
 }
@@ -15,8 +14,11 @@
   width: 100%;
   padding: 16px;
   border: none;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
 
   &:focus-visible {
+    box-shadow: 0 0 0 2px coral;
   }
 
   &:disabled {
@@ -37,6 +39,8 @@
   border: none;
   width: 60px;
   height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 
   &:disabled {
     background-color: var(--color-gray);

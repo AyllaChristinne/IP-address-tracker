@@ -11,9 +11,14 @@ export interface IPDataSuccess {
 }
 
 export interface IPDataError {
-  message: string;
   status: 'fail';
+  message: string;
   query: string;
 }
 
 export type IPData = IPDataSuccess | IPDataError;
+
+export interface Coordinates {
+  lat: number;
+  lon: number;
+}
