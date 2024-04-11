@@ -1,14 +1,5 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IpService } from '../../services/ip.service';
-import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 @Component({

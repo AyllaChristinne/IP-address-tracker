@@ -15,6 +15,7 @@ export class MapComponent implements OnInit, OnChanges {
     lon: 0,
   };
   private map: any;
+  private markerElement: HTMLElement | undefined = undefined;
 
   constructor(private markerService: MarkerService) {}
 
@@ -65,10 +66,13 @@ export class MapComponent implements OnInit, OnChanges {
       }
     });
 
-    marker.addTo(this.map);
-    const markerElement = marker.getElement();
-    if (markerElement) {
-      markerElement.tabIndex = -1;
+    if (marker) {
+      marker.addTo(this.map);
+      this.markerElement = marker.getElement();
+    }
+
+    if (this.markerElement) {
+      this.markerElement.tabIndex = -1;
     }
   }
 }
