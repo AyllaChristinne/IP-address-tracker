@@ -42,10 +42,13 @@ export class AppComponent implements OnInit {
   }
 
   private initApp() {
-    this.ipService.fetchIp().subscribe((res) => {
-      if (res.status === 'success') {
+    this.ipService.fetchIp().subscribe((res: IPData) => {
+      if (!res.error) {
         this.data = res;
-        this.coordinates = { lat: this.data.lat, lon: this.data.lon };
+        this.coordinates = {
+          lat: this.data.latitude,
+          lon: this.data.longitude,
+        };
         this.isError = false;
       } else {
         this.isError = true;
@@ -55,10 +58,13 @@ export class AppComponent implements OnInit {
   }
 
   fetchIp(ip: string) {
-    this.ipService.fetchIp(ip).subscribe((res) => {
-      if (res.status === 'success') {
+    this.ipService.fetchIp(ip).subscribe((res: IPData) => {
+      if (!res.error) {
         this.data = res;
-        this.coordinates = { lat: this.data.lat, lon: this.data.lon };
+        this.coordinates = {
+          lat: this.data.latitude,
+          lon: this.data.longitude,
+        };
         this.isError = false;
       } else {
         this.isError = true;

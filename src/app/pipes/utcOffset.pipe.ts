@@ -7,15 +7,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class UtcOffsetPipe implements PipeTransform {
   transform(offset: number): string {
-    if (offset == null) {
+    if (!offset && offset !== 0) {
       return '';
     }
 
-    const offsetInMinutes = offset / 60;
-    const sign = offsetInMinutes >= 0 ? '+' : '-';
-
-    const hours = Math.abs(Math.floor(offsetInMinutes / 60));
-    const minutes = Math.abs(offsetInMinutes % 60);
+    const sign = offset < 0 ? '-' : '+';
+    const hours = Math.floor(Math.abs(offset) / 100);
+    const minutes = Math.abs(offset) % 100;
 
     const formattedOffset = `${sign}${this.padNumber(hours)}:${this.padNumber(
       minutes

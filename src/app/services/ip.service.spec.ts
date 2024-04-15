@@ -15,15 +15,14 @@ describe('IpService', () => {
   let service: IpService;
   let httpMock: HttpTestingController;
   let mockIPData: IPData = {
-    query: '80.80.80.80',
-    status: 'success',
+    ip: '80.80.80.80',
     region: 'NH',
     city: 'Amsterdam',
-    zip: '1013',
-    lat: 52.4001,
-    lon: 4.87644,
-    offset: 3600,
-    isp: 'Freenom DNS Cloud',
+    postal: '1013',
+    latitude: 52.4001,
+    longitude: 4.87644,
+    utc_offset: 3600,
+    org: 'Freenom DNS Cloud',
   };
 
   beforeEach(() => {
@@ -51,12 +50,7 @@ describe('IpService', () => {
 
     const url = `${environment.getIpDataUrl}`;
     const req = httpMock.expectOne((request: HttpRequest<any>) => {
-      return (
-        request.url === url &&
-        request.method === 'GET' &&
-        request.params.get('fields') ===
-          'query,city,offset,isp,lat,lon,zip,region,status'
-      );
+      return request.url === url && request.method === 'GET';
     });
 
     req.flush(mockIPData);
@@ -71,12 +65,7 @@ describe('IpService', () => {
 
     const url = `${environment.getIpDataUrl}${ip}`;
     const matchReq = httpMock.expectOne((request: HttpRequest<any>) => {
-      return (
-        request.url === url &&
-        request.method === 'GET' &&
-        request.params.get('fields') ===
-          'query,city,offset,isp,lat,lon,zip,region,status'
-      );
+      return request.url === url && request.method === 'GET';
     });
 
     matchReq.flush(mockIPData);

@@ -25,10 +25,8 @@ export class IpService {
   constructor(private http: HttpClient) {}
 
   fetchIp(ip: string = '') {
-    return this.http.get<IPData>(`${environment.getIpDataUrl}${ip}`, {
-      params: {
-        fields: this.urlFieldsParam.toString(),
-      },
-    });
+    return this.http.get<IPData>(
+      `${environment.getIpDataUrl}${ip ? ip + '/' : ''}json`
+    );
   }
 }

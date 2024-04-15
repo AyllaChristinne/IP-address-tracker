@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IPDataSuccess } from '../../models/ip.model';
-import { UtcOffsetPipe } from '../../pipes/utcOffset.pipe';
 import { CommonModule } from '@angular/common';
+import { UtcOffsetPipe } from '../../pipes/utcOffset.pipe';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,6 +19,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {}
 
   getFormattedLocation() {
-    return `${this.ipData?.city}, ${this.ipData?.region} ${this.ipData?.zip}`;
+    return `${this.ipData?.city}, ${this.ipData?.region} ${this.ipData?.postal}`;
   }
 }

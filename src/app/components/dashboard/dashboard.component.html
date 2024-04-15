@@ -2,7 +2,7 @@
     <div class="dashboard-section section-ip">
       <h2 class="dashboard-heading">ip address</h2>
       <div  class="dashboard-info">
-        <p class="dashboard-text" *ngIf="!isLoading && ipData">{{ipData.query}}</p>
+        <p class="dashboard-text" *ngIf="!isLoading && ipData">{{ipData.ip}}</p>
       </div>
     </div>
     <div class="dashboard-section section-location">
@@ -14,13 +14,13 @@
     <div class="dashboard-section section-timezone">
       <h2 class="dashboard-heading">timezone</h2>
       <div  class="dashboard-info">
-        <p class="dashboard-text" *ngIf="!isLoading && ipData">{{ipData.offset | utcOffset }}</p>
+        <p class="dashboard-text" *ngIf="!isLoading && ipData">{{ipData.utc_offset | utcOffset }}</p>
       </div>
     </div>
     <div class="dashboard-section dashboard-section--last section-isp">
       <h2 class="dashboard-heading">isp</h2>
       <div  class="dashboard-info">
-        <p class="dashboard-text" *ngIf="!isLoading && ipData">{{ipData.isp}}</p>
+        <p class="dashboard-text" *ngIf="!isLoading && ipData">{{ ipData.org ? ipData.org : '-' }}</p>
       </div>
     </div>
 </div>
